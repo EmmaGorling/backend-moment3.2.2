@@ -1,3 +1,27 @@
+@import './variables';
+
 #changeForm {
     display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+}
+form {
+    text-align: center;
+    margin: 50px auto;
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: $mid-blue;
+    label {
+        font-weight: 500;
+    }
+    input, textarea, button {
+        border: 2px solid $light-blue;
+        border-radius: 3px;
+        margin: 5px auto;
+    }
 }
