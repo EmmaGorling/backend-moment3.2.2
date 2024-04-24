@@ -1,0 +1,16 @@
+{
+  "name": "backend-moment3.2.2",
+  "version": "1.0.0",
+  "description": "",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "build parcel"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "parcel": "^2.12.0"
+  }
+}
