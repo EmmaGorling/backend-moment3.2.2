@@ -39,10 +39,12 @@ async function addNewWorkExp() {
             body: JSON.stringify(workexperience)
         });
 
-        const data = await response.json();
-
-        messageDiv.innerHTML = 'Din arbetserfarenhet har lagts till!';
+        if(response.ok) {
+            messageDiv.innerHTML = 'Din arbetserfarenhet har lagts till!';
+        } else {
+            messageDiv.innerHTML = 'Felaktigt inmatning.'
+        };        
     } catch (error) {
-        messageDiv.innerHTML = data.errors;
+        messageDiv.innerHTML = errors.message;
     }
 } 

@@ -52,6 +52,8 @@ function writeData(workexperiences) {
                 deleteWorkExp(workexperience._id);
             });
         });
+    } else {
+        writeDiv.innerHTML = 'Hittade inga arbetserfarenheter.'
     }
 }
 
