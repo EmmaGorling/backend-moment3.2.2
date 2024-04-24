@@ -41,7 +41,7 @@ function writeData(workexperiences) {
             changeBtn.classList = 'change';
             article.appendChild(changeBtn);
             changeBtn.addEventListener('click', () => {
-                changeWorkExp(workexperience);
+                addChanges(workexperience, startDate, endDate);
             })
             // Delete-button
             const deleteBtn = document.createElement('button');
@@ -75,6 +75,64 @@ function rewriteDate(date) {
     }
 }
 
+// Change workexperience
+function addChanges(workexperience, startDate, endDate) {
+    toggleChangeForm();
+    // Set the values of inputs to existing object
+    let companynameInput = document.getElementById('changeCompanyname');
+    let jobtitleInput = document.getElementById('changeJobtitle');
+    let locationInput = document.getElementById('changeLocation');
+    let startDateInput = document.getElementById('changeStartdate');
+    let endDateInput = document.getElementById('changeEnddate');
+    let descriptionInput = document.getElementById('changeDescription');
+
+    companynameInput.value = workexperience.companyname;
+    jobtitleInput.value = workexperience.jobtitle;
+    locationInput.value = workexperience.location;
+    startDateInput.value = startDate;
+    endDateInput.value = endDate;
+    descriptionInput.value = workexperience.description;
+
+    // Form eventlistener
+    const changeForm = document.getElementById('changeForm');
+    changeForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        updateWorkExp(workexperience._id);
+    });
+};
+
+async function updateWorkExp(id) {
+    // Get the new values from inputs
+    let workexperience = {
+        companyname: document.getElementById('changeCompanyname').value,
+        location: document.getElementById('changeLocation').value,
+        jobtitle: document.getElementById('changeJobtitle').value,
+        startdate: document.getElementById('changeStartdate').value,
+        enddate: document.getElementById('changeEnddate').value,
+        description: document.getElementById('changeDescription').value
+    }
+    
+    // Fetch with put method
+    try {
+        const response = await fetch(url + '/' + id, {
+            method: "PUT",
+            headers: {
+                "content-type": "Application/json"
+            },
+            body: JSON.stringify(workexperience)
+        });
+        const data = await response.json();
+
+        console.log(data);
+        // Get data again and write it out
+        getData();
+
+        toggleChangeForm();
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 // Remove a workexperience
 async function deleteWorkExp(id) {
     // Fetch with delete-method
@@ -90,5 +148,16 @@ async function deleteWorkExp(id) {
         getData();
     } catch (error) {
         console.log(error);
+    }
+}
+
+// Toggle form
+function toggleChangeForm() {
+    const changeForm = document.getElementById('changeForm');
+
+    if(changeForm.style.display === 'block') {
+        changeForm.style.display = 'none';
+    } else {
+        changeForm.style.display = 'block';
     }
 }

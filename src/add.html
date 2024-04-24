@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Startsida</title>
+    <script type="module" src="js/add.js"></script>
+    <link rel="stylesheet" href="css/main.scss">
 </head>
 <body>
     <header>
@@ -17,8 +19,35 @@
         </nav>
     </header>
     <main>
-        <h2></h2>
-        
+        <h2>Lägg till en arbetserfarenhet</h2>
+        <form action="" id="add">
+            <label for="companyname">Arbetsplats:</label>
+            <br>
+            <input type="text" name="companyname" id="companyname">
+            <br>
+            <label for="location">Plats:</label>
+            <br>
+            <input type="text" name="location" id="location">
+            <br>
+            <label for="jobtitle">Arbetstitel:</label>
+            <br>
+            <input type="text" name="jobtitle" id="jobtitle">
+            <br>
+            <label for="startdate">Från:</label>
+            <br>
+            <input type="date" name="startdate" id="startdate">
+            <br>
+            <label for="enddate">Till:</label>
+            <br>
+            <input type="date" name="enddate" id="enddate">
+            <br>
+            <label for="description">Arbetsbeskrivning:</label>
+            <br>
+            <textarea name="description" id="description" cols="30" rows="6"></textarea>
+            <br>
+            <input type="submit" id="submit" value="Lägg till">
+        </form>
+        <div id="message"></div>
     </main>
     <footer>
         <p>Laborationsuppgift för kursen DT207G, Back-endbaserad webbutveckling</p>

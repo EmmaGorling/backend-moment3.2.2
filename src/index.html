@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Startsida</title>
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <link rel="stylesheet" href="css/main.scss">
 </head>
 <body>
     <header>
@@ -22,9 +23,34 @@
         <div id="show">
 
         </div>
-        <div id="edit">
-
-        </div>
+        <form action="" id="changeForm">
+            <h2>Ändra arbetserfarenhet</h2>
+            <label for="changeCompanyname">Arbetsplats:</label>
+            <br>
+            <input type="text" name="changeCompanyname" id="changeCompanyname">
+            <br>
+            <label for="changeLocation">Plats:</label>
+            <br>
+            <input type="text" name="changeLocation" id="changeLocation">
+            <br>
+            <label for="changeJobtitle">Arbetstitel:</label>
+            <br>
+            <input type="text" name="changeJobtitle" id="changeJobtitle">
+            <br>
+            <label for="changeStartdate">Från:</label>
+            <br>
+            <input type="date" name="changeStartdate" id="changeStartdate">
+            <br>
+            <label for="changeEnddate">Till:</label>
+            <br>
+            <input type="date" name="changeEnddate" id="changeEnddate">
+            <br>
+            <label for="changeDescription">Arbetsbeskrivning:</label>
+            <br>
+            <textarea name="changeDescription" id="changeDescription" cols="30" rows="6"></textarea>
+            <br>
+            <input type="submit" id="submit" value="Spara ändring">
+        </form>
     </main>
     <footer>
         <p>Laborationsuppgift för kursen DT207G, Back-endbaserad webbutveckling</p>
