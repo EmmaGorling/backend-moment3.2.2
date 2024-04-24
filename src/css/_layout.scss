@@ -24,10 +24,11 @@ main {
 }
 article {
     width: 90%;
+    max-width: 600px;
     margin: 5px auto;
     background-color: $mid-blue;
     border: 2px solid $light-blue;
-    padding: 5px 10px;
+    padding: 5px 15px;
     button {
         margin: 5px;
         background-color: $light-blue;
