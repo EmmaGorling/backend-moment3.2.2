@@ -26,8 +26,31 @@ function writeData(workexperiences) {
             // Get the dates and rewrite them
             const startDate = rewriteDate(workexperience.startdate);
             const endDate = rewriteDate(workexperience.enddate);
-            
-            console.log(startDate + ' - ' + endDate);
+            // Create and add article-elements
+            const article = document.createElement('article');
+            article.innerHTML = `
+                <h3>${workexperience.companyname}, ${workexperience.location}</h3>
+                <h4>${workexperience.jobtitle}</h4>
+                <p><strong>Arbetsbeskrivning: </strong> ${workexperience.description}</p>
+                <p><strong>Anställningsperiod: </strong> ${startDate} <strong>-</strong> ${endDate}</p>`;
+
+            writeDiv.appendChild(article);
+            // Change-button
+            const changeBtn = document.createElement('button');
+            changeBtn.textContent = 'Ändra';
+            changeBtn.classList = 'change';
+            article.appendChild(changeBtn);
+            changeBtn.addEventListener('click', () => {
+                changeWorkExp(workexperience);
+            })
+            // Delete-button
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Ta bort';
+            deleteBtn.classList = 'delete';
+            article.appendChild(deleteBtn);
+            deleteBtn.addEventListener('click', () => {
+                deleteWorkExp(workexperience._id);
+            });
         });
     }
 }
@@ -49,5 +72,23 @@ function rewriteDate(date) {
         }
 
         return `${year}-${month}-${day}`;
+    }
+}
+
+// Remove a workexperience
+async function deleteWorkExp(id) {
+    // Fetch with delete-method
+    try {
+        const response = await fetch(url + '/' + id, {
+            method: "DELETE",
+            headers: {
+            "content-type": "Applicaton/json"
+            }
+        });
+        const data = await response.json();
+        // Get data again and write it out
+        getData();
+    } catch (error) {
+        console.log(error);
     }
 }
