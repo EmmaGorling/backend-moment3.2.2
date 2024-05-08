@@ -24,4 +24,13 @@ form {
         border-radius: 3px;
         margin: 5px auto;
     }
+    #note {
+        display: block;
+        font-style: italic;
+        color: rgba($color: #000000, $alpha: 0.7);
+    }
+    #message {
+        color: red;
+        font-weight: 600;
+    }
 }

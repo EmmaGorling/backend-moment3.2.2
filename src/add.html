@@ -24,33 +24,34 @@
     <main>
         <h2>Lägg till en arbetserfarenhet</h2>
         <form action="" id="add">
-            <label for="companyname">Arbetsplats:</label>
+            <label for="companyname">Arbetsplats: *</label>
             <br>
             <input type="text" name="companyname" id="companyname">
             <br>
-            <label for="location">Plats:</label>
+            <label for="location">Plats: *</label>
             <br>
             <input type="text" name="location" id="location">
             <br>
-            <label for="jobtitle">Arbetstitel:</label>
+            <label for="jobtitle">Arbetstitel: *</label>
             <br>
             <input type="text" name="jobtitle" id="jobtitle">
             <br>
-            <label for="startdate">Från:</label>
+            <label for="startdate">Från: *</label>
             <br>
             <input type="date" name="startdate" id="startdate">
             <br>
-            <label for="enddate">Till: (valfritt)</label>
+            <label for="enddate">Till:</label>
             <br>
             <input type="date" name="enddate" id="enddate">
             <br>
-            <label for="description">Arbetsbeskrivning:</label>
+            <label for="description">Arbetsbeskrivning: *</label>
             <br>
             <textarea name="description" id="description" cols="30" rows="6"></textarea>
             <br>
+            <div id="message"></div>
+            <span id="note">( * Obligatoriska fält )</span>
             <input type="submit" id="submit" value="Lägg till">
         </form>
-        <div id="message"></div>
     </main>
     <footer>
         <p>Laborationsuppgift för kursen DT207G, Back-endbaserad webbutveckling</p>

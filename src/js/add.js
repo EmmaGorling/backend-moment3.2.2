@@ -29,22 +29,26 @@ async function addNewWorkExp() {
         description: description
     }
     
+    if(companyname != null && jobtitle != null && location != null && startdate != null && description != null) {
+        messageDiv.innerHTML = 'Du behöver fylla i de fält som är obligatoriska';
+        
+    } else {
+        try {
+            const response = await fetch(url, {
+                method:"POST",
+                headers: {
+                    "content-type": "Application/json"
+                },
+                body: JSON.stringify(workexperience)
+            });
 
-    try {
-        const response = await fetch(url, {
-            method:"POST",
-            headers: {
-                "content-type": "Application/json"
-            },
-            body: JSON.stringify(workexperience)
-        });
-
-        if(response.ok) {
-            messageDiv.innerHTML = 'Din arbetserfarenhet har lagts till!';
-        } else {
-            messageDiv.innerHTML = 'Felaktigt inmatning.'
-        };        
-    } catch (error) {
-        messageDiv.innerHTML = errors.message;
+            if(response.ok) {
+                messageDiv.innerHTML = 'Din arbetserfarenhet har lagts till!';
+            } else {
+                messageDiv.innerHTML = 'Felaktigt inmatning.'
+            };        
+        } catch (error) {
+            messageDiv.innerHTML = errors.message;
+        }
     }
 } 
