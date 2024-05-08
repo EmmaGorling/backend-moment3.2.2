@@ -11,25 +11,25 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function addNewWorkExp() {
-    let companyname = document.getElementById('companyname').value;
-    let jobtitle = document.getElementById('jobtitle').value;
-    let location = document.getElementById('location').value;
-    let startdate = document.getElementById('startdate').value;
-    let enddate = document.getElementById('enddate').value;
-    let description = document.getElementById('description').value;
+    let companyname = document.getElementById('companyname');
+    let jobtitle = document.getElementById('jobtitle');
+    let location = document.getElementById('location');
+    let startdate = document.getElementById('startdate');
+    let enddate = document.getElementById('enddate');
+    let description = document.getElementById('description');
 
     const messageDiv = document.getElementById('message');
 
     let workexperience = {
-        companyname: companyname,
-        location: location,
-        jobtitle: jobtitle,
-        startdate: startdate,
-        enddate: enddate,
-        description: description
+        companyname: companyname.value,
+        location: location.value,
+        jobtitle: jobtitle.value,
+        startdate: startdate.value,
+        enddate: enddate.value,
+        description: description.value
     }
     
-    if(companyname != null && jobtitle != null && location != null && startdate != null && description != null) {
+    if(companyname.value.length < 0 || jobtitle.value.length < 0 || location.value.length < 0 || startdate.value.length < 0 || description.value.length < 0) {
         messageDiv.innerHTML = 'Du behöver fylla i de fält som är obligatoriska';
         
     } else {
@@ -50,5 +50,13 @@ async function addNewWorkExp() {
         } catch (error) {
             messageDiv.innerHTML = errors.message;
         }
+
+        companyname.value = '';
+        jobtitle.value = '';
+        location.value = '';
+        startdate.value = null;
+        enddate.value = null;
+        description.value = '';
+
     }
 } 
