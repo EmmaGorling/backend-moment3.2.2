@@ -42,6 +42,14 @@ async function addNewWorkExp() {
                 body: JSON.stringify(workexperience)
             });
 
+            // Rensa inmatning vid lyckat anrop
+            companyname.value = '';
+            jobtitle.value = '';
+            location.value = '';
+            startdate.value = null;
+            enddate.value = null;
+            description.value = '';
+
             if(response.ok) {
                 messageDiv.innerHTML = 'Din arbetserfarenhet har lagts till!';
             } else {
@@ -50,13 +58,5 @@ async function addNewWorkExp() {
         } catch (error) {
             messageDiv.innerHTML = errors.message;
         }
-
-        companyname.value = '';
-        jobtitle.value = '';
-        location.value = '';
-        startdate.value = null;
-        enddate.value = null;
-        description.value = '';
-
     }
 } 
